@@ -1,0 +1,8 @@
+# Copyright (c) 2024 Floyd Maloto
+# SPDX-License-Identifier: MIT
+
+config SHIELD_CHONKEEB_LEFT
+    def_bool $(shields_list_contains,chonkeeb_left)
+
+config SHIELD_CHONKEEB_RIGHT
+    def_bool $(shields_list_contains,chonkeeb_right)
