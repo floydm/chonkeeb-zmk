@@ -21,6 +21,26 @@
             bindings = <&tog 3>;
             key-positions = <0 2>;
         };
+
+        undo {
+            bindings = <&kp LC(Z)>;
+            key-positions = <37 38>;
+        };
+
+        cut {
+            bindings = <&kp LC(X)>;
+            key-positions = <38 39>;
+        };
+
+        copy {
+            bindings = <&kp LC(C)>;
+            key-positions = <39 40>;
+        };
+
+        paste {
+            bindings = <&kp LC(V)>;
+            key-positions = <40 41>;
+        };
     };
 
     keymap {
@@ -40,11 +60,11 @@
 
         Lower {
             bindings = <
-&bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans       &trans
-&bt BT_CLR_ALL  &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans       &trans
-&trans          &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans       &trans
-&trans          &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans       &trans
-&trans          &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &bootloader  &sys_reset
+&bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans     &trans      &trans           &trans       &trans
+&bt BT_CLR_ALL  &trans        &trans        &trans        &trans        &trans        &trans  &kp KP_N7  &kp KP_N8   &kp KP_NUMBER_9  &trans       &trans
+&trans          &trans        &trans        &trans        &trans        &trans        &trans  &kp KP_N4  &kp KP_N5   &kp KP_NUMBER_6  &trans       &trans
+&trans          &trans        &trans        &trans        &trans        &trans        &trans  &kp KP_N1  &kp KP_N2   &kp KP_N3        &trans       &trans
+&trans          &trans        &trans        &trans        &trans        &trans        &trans  &trans     &kp KP_DOT  &kp KP_N0        &bootloader  &sys_reset
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
