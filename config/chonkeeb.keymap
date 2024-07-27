@@ -43,16 +43,25 @@
         };
     };
 
+    behaviors {
+        bspc_shift: bspc_shift {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BSPC_SHIFT";
+            #binding-cells = <0>;
+            bindings = <&kp BSPC>, <&kp LSHFT>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         Base {
             bindings = <
-&kp GRAVE  &kp N1    &kp N2     &kp N3    &kp N4          &kp N5     &kp N6     &kp N7   &kp N8     &kp N9     &kp N0    &kp EQUAL
-&kp TAB    &kp Q     &kp W      &kp E     &kp R           &kp T      &kp Y      &kp U    &kp I      &kp O      &kp P     &kp MINUS
-&kp ESC    &kp A     &kp S      &kp D     &kp F           &kp G      &kp H      &kp J    &kp K      &kp L      &kp SEMI  &kp SQT
-&kp LBKT   &kp Z     &kp X      &kp C     &kp V           &kp B      &kp N      &kp M    &kp COMMA  &kp DOT    &kp FSLH  &kp RBKT
-&mo 1      &kp LGUI  &kp LCTRL  &kp LALT  &mt LSHFT BSPC  &kp SPACE  &lt 2 RET  &kp DEL  &kp RALT   &kp RCTRL  &kp RGUI  &kp RSHFT
+&kp GRAVE  &kp N1    &kp N2     &kp N3    &kp N4       &kp N5     &kp N6     &kp N7   &kp N8     &kp N9     &kp N0    &kp EQUAL
+&kp TAB    &kp Q     &kp W      &kp E     &kp R        &kp T      &kp Y      &kp U    &kp I      &kp O      &kp P     &kp MINUS
+&kp ESC    &kp A     &kp S      &kp D     &kp F        &kp G      &kp H      &kp J    &kp K      &kp L      &kp SEMI  &kp SQT
+&kp LBKT   &kp Z     &kp X      &kp C     &kp V        &kp B      &kp N      &kp M    &kp COMMA  &kp DOT    &kp FSLH  &kp RBKT
+&mo 1      &kp LGUI  &kp LCTRL  &kp LALT  &bspc_shift  &kp SPACE  &lt 2 RET  &kp DEL  &kp RALT   &kp RCTRL  &kp RGUI  &kp RSHFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
