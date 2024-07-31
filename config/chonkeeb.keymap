@@ -48,7 +48,7 @@
         };
 
         pass {
-            bindings = <&pass>;
+            bindings = <&string_test>;
             key-positions = <0 51>;
             layers = <0>;
         };
@@ -64,6 +64,7 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <120>;
             flavor = "tap-preferred";
+            retro-tap;
         };
 
         spc_t: spc_t {
@@ -75,18 +76,19 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <120>;
             flavor = "tap-preferred";
+            retro-tap;
         };
     };
 
     macros {
-        pass: new_macro {
+        string_test: string_test {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
                 <&macro_tap>,
-                <&kp S &kp O &kp M &kp E &kp T &kp H &kp I &kp N &kp G>;
+                <&kp LS(T) &kp R &kp I &kp C &kp E &kp P &kp S &kp N7 &kp MINUS &kp LS(R) &kp I &kp V &kp E &kp R &kp B &kp A &kp N &kp K &kp MINUS &kp LS(J) &kp A &kp W &kp S &kp MINUS &kp LS(S) &kp E &kp L &kp E &kp C &kp T &kp E &kp D>;
 
-            label = "NEW_MACRO";
+            label = "string_test";
         };
     };
 
