@@ -46,12 +46,6 @@
             key-positions = <40 41>;
             layers = <0>;
         };
-
-        pass {
-            bindings = <&string_test>;
-            key-positions = <0 51>;
-            layers = <0>;
-        };
     };
 
     behaviors {
@@ -62,9 +56,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            quick-tap-ms = <120>;
+            quick-tap-ms = <180>;
             flavor = "tap-preferred";
-            retro-tap;
         };
 
         spc_t: spc_t {
@@ -74,9 +67,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            quick-tap-ms = <120>;
+            quick-tap-ms = <180>;
             flavor = "tap-preferred";
-            retro-tap;
         };
     };
 
