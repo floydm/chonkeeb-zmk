@@ -144,7 +144,7 @@
 &trans      &trans  &trans  &trans        &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &trans  &trans  &trans        &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans
 &kp LSHIFT  &trans  &trans  &trans        &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans  &kp M   &kp LEFT_ALT  &kp SPACE  &kp LCTRL  &trans  &trans  &trans  &trans  &trans  &trans
+&kp BSPC    &trans  &kp M   &kp LEFT_ALT  &kp SPACE  &kp LCTRL  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
