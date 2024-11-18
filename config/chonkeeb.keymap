@@ -45,6 +45,21 @@
             key-positions = <40 41>;
             layers = <0>;
         };
+
+        tog_game2 {
+            bindings = <&tog 5>;
+            key-positions = <0 3>;
+        };
+
+        lboot {
+            bindings = <&bootloader>;
+            key-positions = <0 48>;
+        };
+
+        rboot {
+            bindings = <&bootloader>;
+            key-positions = <11 59>;
+        };
     };
 
     behaviors {
@@ -52,17 +67,6 @@
             compatible = "zmk,behavior-hold-tap";
             label = "SFT_T";
             bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <180>;
-            flavor = "tap-preferred";
-        };
-
-        spc_t: spc_t {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SPC_T";
-            bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -80,7 +84,7 @@
 &kp TAB         &kp Q      &kp W      &kp E     &kp R              &kp T        &kp Y      &kp U      &kp I      &kp O      &kp P     &kp MINUS
 &kp ESC         &kp A      &kp S      &kp D     &kp F              &kp G        &kp H      &kp J      &kp K      &kp L      &kp SEMI  &kp SQT
 &kp LBKT        &kp Z      &kp X      &kp C     &kp V              &kp B        &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH  &kp RBKT
-&kp LEFT_SHIFT  &kp LMETA  &kp LCTRL  &kp LALT  &sft_t LSHFT BSPC  &lt 4 SPACE  &lt 2 RET  &lt 1 DEL  &kp RALT   &kp RCTRL  &kp RGUI  &kp RSHFT
+&kp LEFT_SHIFT  &kp LMETA  &kp LCTRL  &kp LALT  &sft_t LSHFT BSPC  &lt 4 SPACE  &lt 2 RET  &lt 1 DEL  &kp RALT   &kp RCTRL  &sl 1     &kp RSHFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -132,6 +136,16 @@
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        Game2 {
+            bindings = <
+&trans      &trans  &trans  &trans        &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans        &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans        &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&kp LSHIFT  &trans  &trans  &trans        &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans  &kp M   &kp LEFT_ALT  &kp SPACE  &kp LCTRL  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
         };
     };
 };
