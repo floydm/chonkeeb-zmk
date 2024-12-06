@@ -46,11 +46,6 @@
             layers = <0>;
         };
 
-        tog_game2 {
-            bindings = <&tog 5>;
-            key-positions = <0 3>;
-        };
-
         lboot {
             bindings = <&bootloader>;
             key-positions = <0 48>;
@@ -80,11 +75,11 @@
 
         Base {
             bindings = <
-&kp GRAVE       &kp N1     &kp N2     &kp N3    &kp N4             &kp N5       &kp N6     &kp N7     &kp N8     &kp N9     &kp N0    &kp EQUAL
-&kp TAB         &kp Q      &kp W      &kp E     &kp R              &kp T        &kp Y      &kp U      &kp I      &kp O      &kp P     &kp MINUS
-&kp ESC         &kp A      &kp S      &kp D     &kp F              &kp G        &kp H      &kp J      &kp K      &kp L      &kp SEMI  &kp SQT
-&kp LBKT        &kp Z      &kp X      &kp C     &kp V              &kp B        &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH  &kp RBKT
-&kp LEFT_SHIFT  &kp LMETA  &kp LCTRL  &kp LALT  &sft_t LSHFT BSPC  &lt 4 SPACE  &lt 2 RET  &lt 1 DEL  &kp RALT   &kp RCTRL  &sl 1     &kp RSHFT
+&kp GRAVE       &kp N1     &kp N2     &kp N3    &kp N4             &kp N5     &kp N6     &kp N7     &kp N8     &kp N9     &kp N0          &kp EQUAL
+&kp TAB         &kp Q      &kp W      &kp E     &kp R              &kp T      &kp Y      &kp U      &kp I      &kp O      &kp P           &kp MINUS
+&kp ESC         &kp A      &kp S      &kp D     &kp F              &kp G      &kp H      &kp J      &kp K      &kp L      &kp SEMI        &kp SQT
+&kp LBKT        &kp Z      &kp X      &kp C     &kp V              &kp B      &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH        &kp RBKT
+&kp LEFT_SHIFT  &kp LMETA  &kp LCTRL  &kp LALT  &sft_t LSHFT BSPC  &kp SPACE  &lt 2 RET  &lt 1 DEL  &kp RALT   &kp RCTRL  &bt BT_CLR_ALL  &kp RSHFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -115,30 +110,6 @@
         };
 
         Game {
-            bindings = <
-&kp GRAVE  &kp N1    &kp N2  &kp N3    &kp N4     &kp N5     &trans  &trans    &trans    &trans     &trans  &trans
-&kp TAB    &kp T     &kp Q   &kp W     &kp E      &kp R      &trans  &trans    &kp UP    &trans     &trans  &trans
-&kp ESC    &kp G     &kp A   &kp S     &kp D      &kp F      &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
-&kp LSHFT  &kp Z     &kp X   &kp C     &kp V      &kp B      &trans  &trans    &trans    &trans     &trans  &trans
-&trans     &kp LGUI  &kp M   &kp LALT  &kp LCTRL  &kp SPACE  &trans  &trans    &trans    &trans     &trans  &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-        };
-
-        blueooth {
-            bindings = <
-&bt BT_CLR_ALL  &bt BT_SEL 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-        };
-
-        Game2 {
             bindings = <
 &trans     &trans  &trans  &trans        &trans      &trans     &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &trans  &trans  &trans        &trans      &trans     &trans  &trans  &trans  &trans  &trans  &trans
