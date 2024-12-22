@@ -135,11 +135,31 @@
         semicolon {
             bindings = <&kp SEMICOLON>;
             key-positions = <42 54>;
+            layers = <0>;
         };
 
         dash {
             bindings = <&kp MINUS>;
             key-positions = <30 31>;
+            layers = <0>;
+        };
+
+        equals {
+            bindings = <&kp EQUAL>;
+            key-positions = <18 19>;
+            layers = <0>;
+        };
+
+        comma {
+            bindings = <&kp COMMA>;
+            key-positions = <19 20>;
+            layers = <0>;
+        };
+
+        dot {
+            bindings = <&kp DOT>;
+            key-positions = <31 32>;
+            layers = <0>;
         };
     };
 
