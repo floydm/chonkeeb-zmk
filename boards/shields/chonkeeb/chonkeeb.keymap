@@ -7,100 +7,98 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h> // Required for mouse support
 
 / {
     combos {
         compatible = "zmk,combos";
 
+        // ZMK Studio can now detect and modify these [cite: 26]
         to_default {
             bindings = <&to 0>;
-            key-positions = <0 1>;
+            key-positions = <0 1>; [cite: 27, 28]
         };
 
         tog_game {
             bindings = <&tog 3>;
-            key-positions = <0 2>;
+            key-positions = <0 2>; [cite: 29]
         };
 
         undo {
             bindings = <&kp LC(Z)>;
-            key-positions = <37 38>;
+            key-positions = <37 38>; [cite: 30]
         };
 
         cut {
             bindings = <&kp LC(X)>;
-            key-positions = <38 39>;
+            key-positions = <38 39>; [cite: 31]
         };
 
         copy {
             bindings = <&kp LC(C)>;
-            key-positions = <39 40>;
+            key-positions = <39 40>; [cite: 32]
         };
 
         paste {
             bindings = <&kp LC(V)>;
-            key-positions = <40 41>;
+            key-positions = <40 41>; [cite: 33]
         };
     };
 
     behaviors {
         bspc_shift: bspc_shift {
             compatible = "zmk,behavior-tap-dance";
-            label = "BSPC_SHIFT";
+            label = "BSPC_SHIFT"; [cite: 34]
             #binding-cells = <0>;
-            bindings = <&kp BSPC>, <&kp LSHFT>;
+            bindings = <&kp BSPC>, <&kp LSHFT>; [cite: 34]
         };
     };
 
     keymap {
-        compatible = "zmk,keymap";
+        compatible = "zmk,keymap"; [cite: 35]
 
         Base {
             bindings = <
-&kp GRAVE  &kp N1    &kp N2     &kp N3    &kp N4                    &kp N5     &kp N6     &kp N7   &kp N8     &kp N9     &kp N0    &kp EQUAL
-&kp TAB    &kp Q     &kp W      &kp E     &kp R                     &kp T      &kp Y      &kp U    &kp I      &kp O      &kp P     &kp MINUS
-&kp ESC    &kp A     &kp S      &kp D     &kp F                     &kp G      &kp H      &kp J    &kp K      &kp L      &kp SEMI  &kp SQT
-&kp LBKT   &kp Z     &kp X      &kp C     &kp V                     &kp B      &kp N      &kp M    &kp COMMA  &kp DOT    &kp FSLH  &kp RBKT
-&mo 1      &kp LGUI  &kp LCTRL  &kp LALT  &mt LEFT_SHIFT BACKSPACE  &kp SPACE  &lt 2 RET  &kp DEL  &kp RALT   &kp RCTRL  &kp RGUI  &kp RSHFT
+&kp GRAVE  &kp N1    &kp N2     &kp N3    &kp N4                    &kp N5     &kp N6     &kp N7   &kp N8     &kp N9     &kp N0    &kp EQUAL [cite: 36]
+&kp TAB    &kp Q     &kp W      &kp E     &kp R                     &kp T      &kp Y      &kp U    &kp I      &kp O      &kp P     &kp MINUS [cite: 37]
+&kp ESC    &kp A     &kp S      &kp D     &kp F                     &kp G      &kp H      &kp J    &kp K      &kp L      &kp SEMI  &kp SQT [cite: 38]
+&kp LBKT   &kp Z     &kp X      &kp C     &kp V                     &kp B      &kp N      &kp M    &kp COMMA  &kp DOT    &kp FSLH  &kp RBKT [cite: 39]
+&mo 1      &kp LGUI  &kp LCTRL  &kp LALT  &mt LEFT_SHIFT BACKSPACE  &kp SPACE  &lt 2 RET  &kp DEL  &kp RALT   &kp RCTRL  &kp RGUI  &kp RSHFT [cite: 39]
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; [cite: 40]
         };
 
         Lower {
             bindings = <
-&bt BT_CLR      &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &trans  &trans     &trans      &trans           &trans       &trans
-&bt BT_CLR_ALL  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &trans  &kp KP_N7  &kp KP_N8   &kp KP_NUMBER_9  &trans       &trans
-&trans          &trans         &trans         &trans         &trans         &trans         &trans  &kp KP_N4  &kp KP_N5   &kp KP_NUMBER_6  &trans       &trans
-&trans          &trans         &trans         &trans         &trans         &trans         &trans  &kp KP_N1  &kp KP_N2   &kp KP_N3        &trans       &trans
-&trans          &trans         &trans         &trans         &trans         &trans         &trans  &trans     &kp KP_DOT  &kp KP_N0        &bootloader  &sys_reset
+&bt BT_CLR      &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &trans  &trans     &trans      &trans           &trans       &trans [cite: 40]
+&bt BT_CLR_ALL  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &trans  &kp KP_N7  &kp KP_N8   &kp KP_NUMBER_9  &trans       &trans [cite: 41]
+&studio_unlock  &trans         &trans         &trans         &trans         &trans         &trans  &kp KP_N4  &kp KP_N5   &kp KP_NUMBER_6  &trans       &trans [cite: 42]
+&trans          &trans         &trans         &trans         &trans         &trans         &trans  &kp KP_N1  &kp KP_N2   &kp KP_N3        &trans       &trans [cite: 42]
+&trans          &trans         &trans         &trans         &trans         &trans         &trans  &trans     &kp KP_DOT  &kp KP_N0        &bootloader  &sys_reset [cite: 43]
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; [cite: 44]
         };
 
         Raise {
             bindings = <
-&trans        &kp F1  &kp F2  &kp F3  &kp F4  &kp F5   &kp F6     &kp F7    &kp F8    &kp F9     &kp F10       &trans
-&trans        &trans  &trans  &trans  &trans  &kp F11  &kp F12    &kp HOME  &kp UP    &kp END    &trans        &trans
-&trans        &trans  &trans  &trans  &trans  &trans   &kp PG_UP  &kp LEFT  &kp DOWN  &kp RIGHT  &kp LS(PIPE)  &trans
-&trans        &trans  &trans  &trans  &trans  &trans   &kp PG_DN  &trans    &trans    &trans     &kp BSLH      &trans
-&kp LS(LPAR)  &trans  &trans  &trans  &trans  &trans   &trans     &trans    &trans    &trans     &trans        &kp LS(RPAR)
+&trans        &kp F1          &kp F2          &kp F3          &kp F4          &kp F5   &kp F6     &kp F7    &kp F8    &kp F9     &kp F10       &trans [cite: 44]
+&trans        &mmv MOVE_UP    &mkp LCLK       &mmv MOVE_UP    &mkp RCLK       &kp F11  &kp F12    &kp HOME  &kp UP    &kp END    &trans        &trans [cite: 45]
+&trans        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans          &trans   &kp PG_UP  &kp LEFT  &kp DOWN  &kp RIGHT  &kp LS(PIPE)  &trans [cite: 45]
+&trans        &msc SCRL_UP    &msc SCRL_DOWN  &trans          &trans          &trans   &kp PG_DN  &trans    &trans    &trans     &kp BSLH      &trans [cite: 45]
+&kp LS(LPAR)  &trans          &trans          &trans          &trans          &trans   &trans     &trans    &trans    &trans     &trans        &kp LS(RPAR) [cite: 46]
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; [cite: 47]
         };
 
         Game {
             bindings = <
-&kp GRAVE  &kp N1    &kp N2  &kp N3    &kp N4     &kp N5     &trans  &trans  &trans  &trans  &trans  &trans
-&kp TAB    &kp T     &kp Q   &kp W     &kp E      &kp R      &trans  &trans  &trans  &trans  &trans  &trans
-&kp ESC    &kp G     &kp A   &kp S     &kp D      &kp F      &trans  &trans  &trans  &trans  &trans  &trans
-&kp LSHFT  &kp Z     &kp X   &kp C     &kp V      &kp B      &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp LGUI  &kp M   &kp LALT  &kp LCTRL  &kp SPACE  &trans  &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &kp N1    &kp N2  &kp N3    &kp N4     &kp N5     &trans  &trans  &trans  &trans  &trans  &trans [cite: 47]
+&kp TAB    &kp T     &kp Q   &kp W     &kp E      &kp R      &trans  &trans  &trans  &trans  &trans  &trans [cite: 48]
+&kp ESC    &kp G     &kp A   &kp S     &kp D      &kp F      &trans  &trans  &trans  &trans  &trans  &trans [cite: 48]
+&kp LSHFT  &kp Z     &kp X   &kp C     &kp V      &kp B      &trans  &trans  &trans  &trans  &trans  &trans [cite: 48]
+&trans     &kp LGUI  &kp M   &kp LALT  &kp LCTRL  &kp SPACE  &trans  &trans  &trans  &trans  &trans  &trans [cite: 49]
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; [cite: 50]
         };
     };
 };
