@@ -169,21 +169,6 @@
         };
     };
 
-    // Ramp mouse move/scroll up to full speed quickly instead of the
-    // default slow linear crawl, so held mmv/msc bindings feel responsive.
-
-    &mmv {
-        acceleration-exponent = <1>;
-        time-to-max-speed-ms = <300>;
-        delay-ms = <0>;
-    };
-
-    &msc {
-        acceleration-exponent = <1>;
-        time-to-max-speed-ms = <300>;
-        delay-ms = <0>;
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -233,4 +218,19 @@
             >;
         };
     };
+};
+
+// Ramp mouse move/scroll up to full speed quickly instead of the
+// default slow linear crawl, so held mmv/msc bindings feel responsive.
+
+&mmv {
+    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <300>;
+    delay-ms = <0>;
+};
+
+&msc {
+    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <300>;
+    delay-ms = <0>;
 };
