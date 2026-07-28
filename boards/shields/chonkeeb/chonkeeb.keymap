@@ -158,7 +158,6 @@
         // Optimizations for fast, fluid typing without miss-taps
         sft_t: sft_t {
             compatible = "zmk,behavior-hold-tap";
-            label = "SFT_T";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
