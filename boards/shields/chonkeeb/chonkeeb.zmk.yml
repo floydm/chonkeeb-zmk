@@ -3,12 +3,12 @@ id: chonkeeb
 name: Chonkeeb
 type: shield
 url: https://github.com/floydm/chonkeeb
-requires: [pro_micro]
+requires: [nice_nano_v2]
 exposes: [i2c_oled]
 features:
   - keys
-  # - display  # Comment out until display is properly configured
-  - pointing
+  # - display  # Uncomment when you add OLED
+  # - pointing # Uncomment when you add pointing device
 siblings:
   - chonkeeb_left
   - chonkeeb_right

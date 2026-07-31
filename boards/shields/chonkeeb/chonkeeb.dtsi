@@ -35,7 +35,7 @@
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
-        diode-direction = "col2row";  // Keep as-is if it works for you
+        diode-direction = "col2row";
         
         row-gpios
             = <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -52,7 +52,7 @@
         a-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
-        status = "disabled";  // Enabled in left overlay
+        status = "disabled";
     };
 
     sensors: sensors {
@@ -78,8 +78,7 @@
         com-invdir;
         com-sequential;
         inversion-on;
-        // Updated from deprecated prechargep
-        charge-pump = <0x14>;
-        pre-charge = <0x22>;
+        prechargep = <0x22>;
+        status = "disabled";  // DISABLED BY DEFAULT
     };
 };
