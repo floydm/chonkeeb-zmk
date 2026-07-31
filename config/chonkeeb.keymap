@@ -1,10 +1,7 @@
 /*
  * Copyright (c) 2020 The ZMK Contributors
- *
  * SPDX-License-Identifier: MIT
  */
-// Faster default cursor/scroll speed before pulling in the pointing header
-// (must be defined before the include). Defaults are 600 / 10.
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
@@ -53,8 +50,9 @@
             layers = <0>;
         };
 
+        // Modern Smart Caps Word
         caps_word {
-            bindings = <&kp CAPSLOCK>;
+            bindings = <&caps_word>;
             key-positions = <53 54>;
             layers = <0>;
         };
@@ -157,15 +155,16 @@
     };
 
     behaviors {
+        // Optimizations for fast, fluid typing without miss-taps
         sft_t: sft_t {
             compatible = "zmk,behavior-hold-tap";
-            label = "SFT_T";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <180>;
-            flavor = "tap-preferred";
+            tapping-term-ms = <175>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <125>;
+            flavor = "balanced";
         };
     };
 
@@ -198,11 +197,11 @@
 
         Raise {
             bindings = <
-&trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5   &kp F6     &kp F7    &kp F8    &kp F9     &kp F10  &kp PRINTSCREEN
-&trans  &trans  &trans  &trans  &trans  &kp F11  &kp F12    &kp HOME  &kp UP    &kp END    &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans   &kp PG_UP  &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans   &kp PG_DN  &trans    &trans    &trans     &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans   &trans     &trans    &trans    &trans     &trans   &trans
+&trans  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5   &kp F6     &kp F7        &kp F8        &kp F9        &kp F10      &kp PRINTSCREEN
+&trans  &kp C_BRI_DN  &kp C_BRI_UP  &kp C_PREV    &kp C_NEXT    &kp F11  &kp F12    &kp HOME      &kp UP        &kp END       &kp C_PP     &kp C_MUTE
+&trans  &trans        &trans        &trans        &trans        &trans   &kp PG_UP  &kp LEFT      &kp DOWN      &kp RIGHT     &trans       &trans
+&trans  &trans        &trans        &trans        &trans        &trans   &kp PG_DN  &trans        &trans        &trans        &trans       &trans
+&trans  &trans        &trans        &trans        &trans        &trans   &trans     &trans        &trans        &trans        &trans       &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -219,9 +218,6 @@
         };
     };
 };
-
-// Ramp mouse move/scroll up to full speed quickly instead of the
-// default slow linear crawl, so held mmv/msc bindings feel responsive.
 
 &mmv {
     acceleration-exponent = <1>;
