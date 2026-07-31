@@ -3,164 +3,193 @@
  * SPDX-License-Identifier: MIT
  */
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/mouse.h>  // Added for mouse keycodes
 
 / {
     combos {
         compatible = "zmk,combos";
 
+        // Layer toggles
         to_default {
             bindings = <&to 0>;
             key-positions = <0 1>;
+            timeout-ms = <50>;
         };
 
         tog_game {
             bindings = <&tog 3>;
             key-positions = <0 2>;
+            timeout-ms = <50>;
         };
 
+        // Edit combos - positions adjusted for 5x12 layout
         undo {
             bindings = <&kp LC(Z)>;
-            key-positions = <37 38>;
+            key-positions = <37 38>;  // Row 3, cols 11-12
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         cut {
             bindings = <&kp LC(X)>;
-            key-positions = <38 39>;
+            key-positions = <38 39>;  // Row 3, cols 12-13
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         copy {
             bindings = <&kp LC(C)>;
-            key-positions = <39 40>;
+            key-positions = <39 40>;  // Row 4, cols 0-1
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         paste {
             bindings = <&kp LC(V)>;
-            key-positions = <40 41>;
+            key-positions = <40 41>;  // Row 4, cols 1-2
             layers = <0>;
+            timeout-ms = <50>;
         };
 
-        // Modern Smart Caps Word
+        // Smart Caps Word
         caps_word {
             bindings = <&caps_word>;
-            key-positions = <53 54>;
+            key-positions = <53 54>;  // These positions seem too high
             layers = <0>;
+            timeout-ms = <50>;
         };
 
+        // Bracket combos
         lbkrt {
-            bindings = <&kp LEFT_BRACKET>;
+            bindings = <&kp LBKT>;  // Updated from LEFT_BRACKET
             key-positions = <17 29>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         rbrkt {
-            bindings = <&kp RIGHT_BRACKET>;
+            bindings = <&kp RBKT>;  // Updated from RIGHT_BRACKET
             key-positions = <18 30>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         lbrace {
-            bindings = <&kp LEFT_BRACE>;
+            bindings = <&kp LBRC>;  // Updated from LEFT_BRACE
             key-positions = <16 28>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         rbrace {
-            bindings = <&kp RIGHT_BRACE>;
+            bindings = <&kp RBRC>;  // Updated from RIGHT_BRACE
             key-positions = <19 31>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
+        // Symbol combos
         lessthan {
-            bindings = <&kp LESS_THAN>;
+            bindings = <&kp LT>;
             key-positions = <41 29>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         greaterthan {
-            bindings = <&kp GREATER_THAN>;
+            bindings = <&kp GT>;
             key-positions = <30 42>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         fslash {
-            bindings = <&kp SLASH>;
+            bindings = <&kp FSLH>;  // Updated from SLASH
             key-positions = <42 31>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         bslash {
-            bindings = <&kp BACKSLASH>;
+            bindings = <&kp BSLH>;  // Updated from BACKSLASH
             key-positions = <28 41>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         underscore {
-            bindings = <&kp UNDERSCORE>;
+            bindings = <&kp UNDER>;
             key-positions = <42 43>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         pipe {
             bindings = <&kp PIPE>;
             key-positions = <46 34>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         colon {
             bindings = <&kp COLON>;
             key-positions = <30 54>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         semicolon {
-            bindings = <&kp SEMICOLON>;
+            bindings = <&kp SCLN>;  // Updated from SEMICOLON
             key-positions = <42 54>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         dash {
             bindings = <&kp MINUS>;
             key-positions = <30 31>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         equals {
             bindings = <&kp EQUAL>;
             key-positions = <18 19>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         comma {
-            bindings = <&kp COMMA>;
+            bindings = <&kp CMMA>;  // Updated from COMMA
             key-positions = <19 20>;
             layers = <0>;
+            timeout-ms = <50>;
         };
 
         dot {
             bindings = <&kp DOT>;
             key-positions = <31 32>;
             layers = <0>;
+            timeout-ms = <50>;
         };
     };
 
     behaviors {
-        // Optimizations for fast, fluid typing without miss-taps
+        // Optimized hold-tap behavior
         sft_t: sft_t {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&kp>;
-
             #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            hold-tap = <&hold_tap_config>;
+        };
+
+        hold_tap_config: hold_tap_config {
+            compatible = "zmk,behavior-hold-tap-config";
             tapping-term-ms = <175>;
             quick-tap-ms = <150>;
             require-prior-idle-ms = <125>;
@@ -173,11 +202,11 @@
 
         Base {
             bindings = <
-&kp GRAVE       &kp N1     &kp N2     &kp N3    &kp N4             &kp N5     &kp N6     &kp N7        &kp N8     &kp N9     &kp N0         &kp EQUAL
-&kp TAB         &kp Q      &kp W      &kp E     &kp R              &kp T      &kp Y      &kp U         &kp I      &kp O      &kp P          &kp MINUS
-&kp ESC         &kp A      &kp S      &kp D     &kp F              &kp G      &kp H      &kp J         &kp K      &kp L      &kp SEMI       &kp SQT
-&kp LEFT_SHIFT  &kp Z      &kp X      &kp C     &kp V              &kp B      &kp N      &kp M         &kp COMMA  &kp DOT    &kp FSLH       &kp RIGHT_SHIFT
-&kp LCTRL       &kp LMETA  &kp LCTRL  &kp LALT  &sft_t LSHFT BSPC  &kp SPACE  &lt 2 RET  &lt 1 DELETE  &kp RALT   &kp RCTRL  &kp RIGHT_GUI  &kp RCTRL
+&kp GRAVE  &kp N1     &kp N2     &kp N3    &kp N4    &kp N5     &kp N6     &kp N7    &kp N8     &kp N9     &kp N0     &kp EQUAL
+&kp TAB    &kp Q      &kp W      &kp E     &kp R     &kp T      &kp Y      &kp U     &kp I      &kp O      &kp P      &kp MINUS
+&kp ESC    &kp A      &kp S      &kp D     &kp F     &kp G      &kp H      &kp J     &kp K      &kp L      &kp SCLN   &kp SQT
+&kp LSHIFT &kp Z      &kp X      &kp C     &kp V     &kp B      &kp N      &kp M     &kp CMMA   &kp DOT    &kp FSLH   &kp RSHIFT
+&kp LCTRL  &kp LGUI   &kp LCTRL  &kp LALT  &sft_t LSHFT BSPC &kp SPACE &lt 2 RET &lt 1 DELETE &kp RALT &kp RCTRL &kp RGUI  &kp RCTRL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -186,8 +215,8 @@
         Lower {
             bindings = <
 &trans  &trans          &trans          &trans          &trans           &trans    &bt BT_SEL 0  &kp KP_NUMLOCK  &kp KP_SLASH  &kp KP_MULTIPLY  &kp KP_MINUS  &out OUT_USB
-&trans  &msc SCRL_UP    &mkp RCLK       &mmv MOVE_UP    &mkp LCLK        &mkp MB4  &bt BT_SEL 1  &kp KP_N7       &kp KP_N8     &kp KP_NUMBER_9  &kp KP_PLUS   &out OUT_BLE
-&trans  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5  &bt BT_SEL 2  &kp KP_N4       &kp KP_N5     &kp KP_NUMBER_6  &trans        &trans
+&trans  &msc SCRL_UP    &mkp RCLK       &mmv MOVE_UP    &mkp LCLK        &mkp MB4  &bt BT_SEL 1  &kp KP_N7       &kp KP_N8     &kp KP_N9        &kp KP_PLUS   &out OUT_BLE
+&trans  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5  &bt BT_SEL 2  &kp KP_N4       &kp KP_N5     &kp KP_N6        &trans        &trans
 &trans  &trans          &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans    &bt BT_SEL 3  &kp KP_N1       &kp KP_N2     &kp KP_N3        &trans        &bt BT_CLR_ALL
 &trans  &trans          &trans          &trans          &trans           &trans    &trans        &trans          &kp KP_DOT    &kp KP_N0        &trans        &trans
             >;
@@ -197,7 +226,7 @@
 
         Raise {
             bindings = <
-&trans  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5   &kp F6     &kp F7        &kp F8        &kp F9        &kp F10      &kp PRINTSCREEN
+&trans  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5   &kp F6     &kp F7        &kp F8        &kp F9        &kp F10      &kp PSCRN
 &trans  &kp C_BRI_DN  &kp C_BRI_UP  &kp C_PREV    &kp C_NEXT    &kp F11  &kp F12    &kp HOME      &kp UP        &kp END       &kp C_PP     &kp C_MUTE
 &trans  &trans        &trans        &trans        &trans        &trans   &kp PG_UP  &kp LEFT      &kp DOWN      &kp RIGHT     &trans       &trans
 &trans  &trans        &trans        &trans        &trans        &trans   &kp PG_DN  &trans        &trans        &trans        &trans       &trans
@@ -209,22 +238,24 @@
 
         Game {
             bindings = <
-&trans     &trans  &trans  &trans        &trans     &trans     &trans     &trans   &trans  &trans  &trans  &trans
-&trans     &trans  &trans  &trans        &trans     &trans     &trans     &trans   &trans  &trans  &trans  &trans
-&trans     &trans  &trans  &trans        &trans     &trans     &trans     &trans   &trans  &trans  &trans  &trans
-&kp LSHFT  &trans  &trans  &trans        &trans     &trans     &trans     &trans   &trans  &trans  &trans  &trans
-&kp BSPC   &trans  &kp M   &kp LEFT_ALT  &kp LCTRL  &kp SPACE  &kp ENTER  &kp DEL  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LSHIFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp BSPC  &trans  &kp M   &kp LALT  &kp LCTRL  &kp SPACE  &kp RET  &kp DEL  &trans  &trans  &trans  &trans
             >;
         };
     };
 };
 
+// Mouse movement configuration
 &mmv {
     acceleration-exponent = <1>;
     time-to-max-speed-ms = <300>;
     delay-ms = <0>;
 };
 
+// Mouse scroll configuration
 &msc {
     acceleration-exponent = <1>;
     time-to-max-speed-ms = <300>;

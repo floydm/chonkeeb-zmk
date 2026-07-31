@@ -6,17 +6,18 @@
 
 #include "chonkeeb.dtsi"
 
+// Right half column offset
 &default_transform {
     col-offset = <6>;
 };
 
+// Right half column GPIOs (columns 6-11)
 &kscan0 {
     col-gpios
-        = <&pro_micro 10 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 16 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 14 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 15 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 18 GPIO_ACTIVE_HIGH>
-        , <&pro_micro 19 GPIO_ACTIVE_HIGH>
-        ;
+        = <&pro_micro 10 GPIO_ACTIVE_HIGH>  // Column 6
+        , <&pro_micro 16 GPIO_ACTIVE_HIGH>  // Column 7
+        , <&pro_micro 14 GPIO_ACTIVE_HIGH>  // Column 8
+        , <&pro_micro 15 GPIO_ACTIVE_HIGH>  // Column 9
+        , <&pro_micro 18 GPIO_ACTIVE_HIGH>  // Column 10
+        , <&pro_micro 19 GPIO_ACTIVE_HIGH>; // Column 11
 };
