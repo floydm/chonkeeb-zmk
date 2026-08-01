@@ -1,4 +1,3 @@
-
 if SHIELD_CHONKEEB_LEFT
 
 config ZMK_KEYBOARD_NAME
@@ -14,18 +13,23 @@ if SHIELD_CHONKEEB_LEFT || SHIELD_CHONKEEB_RIGHT
 config ZMK_SPLIT
     default y
 
+# Display settings - only if you have OLED
 if ZMK_DISPLAY
 
+# I2C is typically enabled automatically, but keep for safety
 config I2C
     default y
 
+# SSD1306 is now a Zephyr driver
 config SSD1306
     default y
 
 endif # ZMK_DISPLAY
 
+# LVGL settings - for displays
 if LVGL
 
+# These settings may need adjustment for v4.x
 config LV_Z_VDB_SIZE
     default 64
 
@@ -41,4 +45,4 @@ endchoice
 
 endif # LVGL
 
-endif
+endif # SHIELD_CHONKEEB_LEFT || SHIELD_CHONKEEB_RIGHT
