@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/mouse.h>
 
 / {
     combos {
@@ -139,7 +139,7 @@
         };
 
         semicolon {
-            bindings = <&kp SCLN>;
+            bindings = <&kp SEMICOLON>;
             key-positions = <42 54>;
             layers = <0>;
             timeout-ms = <50>;
@@ -160,7 +160,7 @@
         };
 
         comma {
-            bindings = <&kp CMMA>;
+            bindings = <&kp COMMA>;
             key-positions = <19 20>;
             layers = <0>;
             timeout-ms = <50>;
@@ -176,10 +176,12 @@
 
     behaviors {
         // Fixed hold-tap behavior
+
         sft_t: sft_t {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
+
             tapping-term-ms = <175>;
             quick-tap-ms = <150>;
             require-prior-idle-ms = <125>;
@@ -192,11 +194,11 @@
 
         Base {
             bindings = <
-&kp GRAVE  &kp N1     &kp N2     &kp N3    &kp N4    &kp N5     &kp N6     &kp N7    &kp N8     &kp N9     &kp N0     &kp EQUAL
-&kp TAB    &kp Q      &kp W      &kp E     &kp R     &kp T      &kp Y      &kp U     &kp I      &kp O      &kp P      &kp MINUS
-&kp ESC    &kp A      &kp S      &kp D     &kp F     &kp G      &kp H      &kp J     &kp K      &kp L      &kp SCLN   &kp SQT
-&kp LSHIFT &kp Z      &kp X      &kp C     &kp V     &kp B      &kp N      &kp M     &kp CMMA   &kp DOT    &kp FSLH   &kp RSHIFT
-&kp LCTRL  &kp LGUI   &kp LCTRL  &kp LALT  &sft_t LSHFT BSPC &kp SPACE &lt 2 RET &lt 1 DELETE &kp RALT &kp RCTRL &kp RGUI  &kp RCTRL
+&kp GRAVE   &kp N1    &kp N2     &kp N3    &kp N4             &kp N5     &kp N6     &kp N7        &kp N8     &kp N9     &kp N0         &kp EQUAL
+&kp TAB     &kp Q     &kp W      &kp E     &kp R              &kp T      &kp Y      &kp U         &kp I      &kp O      &kp P          &kp MINUS
+&kp ESC     &kp A     &kp S      &kp D     &kp F              &kp G      &kp H      &kp J         &kp K      &kp L      &kp SEMICOLON  &kp SQT
+&kp LSHIFT  &kp Z     &kp X      &kp C     &kp V              &kp B      &kp N      &kp M         &kp COMMA  &kp DOT    &kp FSLH       &kp RSHIFT
+&kp LCTRL   &kp LGUI  &kp LCTRL  &kp LALT  &sft_t LSHFT BSPC  &kp SPACE  &lt 2 RET  &lt 1 DELETE  &kp RALT   &kp RCTRL  &kp RGUI       &kp RCTRL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -216,11 +218,11 @@
 
         Raise {
             bindings = <
-&trans  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5   &kp F6     &kp F7        &kp F8        &kp F9        &kp F10      &kp PSCRN
-&trans  &kp C_BRI_DN  &kp C_BRI_UP  &kp C_PREV    &kp C_NEXT    &kp F11  &kp F12    &kp HOME      &kp UP        &kp END       &kp C_PP     &kp C_MUTE
-&trans  &trans        &trans        &trans        &trans        &trans   &kp PG_UP  &kp LEFT      &kp DOWN      &kp RIGHT     &trans       &trans
-&trans  &trans        &trans        &trans        &trans        &trans   &kp PG_DN  &trans        &trans        &trans        &trans       &trans
-&trans  &trans        &trans        &trans        &trans        &trans   &trans     &trans        &trans        &trans        &trans       &trans
+&trans  &kp F1        &kp F2        &kp F3      &kp F4      &kp F5   &kp F6     &kp F7    &kp F8    &kp F9     &kp F10   &kp PSCRN
+&trans  &kp C_BRI_DN  &kp C_BRI_UP  &kp C_PREV  &kp C_NEXT  &kp F11  &kp F12    &kp HOME  &kp UP    &kp END    &kp C_PP  &kp C_MUTE
+&trans  &trans        &trans        &trans      &trans      &trans   &kp PG_UP  &kp LEFT  &kp DOWN  &kp RIGHT  &trans    &trans
+&trans  &trans        &trans        &trans      &trans      &trans   &kp PG_DN  &trans    &trans    &trans     &trans    &trans
+&trans  &trans        &trans        &trans      &trans      &trans   &trans     &trans    &trans    &trans     &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -228,11 +230,11 @@
 
         Game {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&kp LSHIFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&kp BSPC  &trans  &kp M   &kp LALT  &kp LCTRL  &kp SPACE  &kp RET  &kp DEL  &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans    &trans     &trans     &trans   &trans   &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans    &trans     &trans     &trans   &trans   &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans    &trans     &trans     &trans   &trans   &trans  &trans  &trans  &trans
+&kp LSHIFT  &trans  &trans  &trans    &trans     &trans     &trans   &trans   &trans  &trans  &trans  &trans
+&kp BSPC    &trans  &kp M   &kp LALT  &kp LCTRL  &kp SPACE  &kp RET  &kp DEL  &trans  &trans  &trans  &trans
             >;
         };
     };
